@@ -38,5 +38,11 @@ $mail_pattern = "/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/";
 */
 var_dump(checkRegular($mail_pattern,"zhangchao@pptv.com"));
 
-$script_pattern = "/^<script [^>] + >$/";
+
+$script_pattern = "/<script[^>]*?>.*?<\/script>/si";
+/*
+*?进行懒惰匹配，尽量进行少匹配
+s是匹配换行符，i忽略大小写
+*/
+var_dump(checkRegular($script_pattern,"<Script>>>123</script>"));
 
