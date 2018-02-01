@@ -8,4 +8,4 @@ def sendMessage(topic,params):
     producer.send(topic, parmas_message.encode('utf-8'))
     producer.flush()
 
-sendMessage("study",{'uid': '607'})
+sendMessage("study",{'uid': '608'})

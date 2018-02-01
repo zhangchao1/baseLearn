@@ -9,6 +9,7 @@ class baseConsumer(object):
         self.bootstrap_servers = bootstrap_servers
         self.offset_reset = offset_reset
         self.connet()
+        self.recieve()
         
     def connet(self):
         self.kafka = Consumer(self.topic,self.group_id,self.bootstrap_servers,self.offset_reset)

@@ -21,6 +21,8 @@ class Consumer(object):
                 )
                 self.kafka.poll()
                 partition = self.kafka.assignment()
+                self.kafka.seek_to_beginning()
+                self.kafka.commit_async()
 
         def run(self):
                _thread.start_new_thread(self.pool_message()) 
@@ -29,4 +31,4 @@ class Consumer(object):
                 for msg in self.kafka:
                         self.kafka.commit_async()
                         self.current_queue.put(msg.value)
-                
+                        print (self.current_queue.get())
