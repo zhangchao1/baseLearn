@@ -19,10 +19,12 @@ class Consumer(object):
                    group_id = self.group_id,
                    bootstrap_servers = self.bootstrap_servers
                 )
+                self.kafka.topics()
                 self.kafka.poll()
                 partition = self.kafka.assignment()
-                self.kafka.seek_to_beginning()
                 self.kafka.commit_async()
+                self.kafka.seek_to_beginning()
+                
 
         def run(self):
                _thread.start_new_thread(self.pool_message()) 
